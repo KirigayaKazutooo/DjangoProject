@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Product
 
 
@@ -30,7 +30,7 @@ class ProductCreateView(LoginRequiredMixin ,CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class ProductUpdateView(LoginRequiredMixin ,CreateView):
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = Product
     fields = ['title', 'content']
 
@@ -38,6 +38,21 @@ class ProductUpdateView(LoginRequiredMixin ,CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self):
+        product = self.get_object()
+        if self.request.user == product.author:
+            return True
+        return False
+
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Product
+    success_url = '/'
+
+    def test_func(self):
+        product = self.get_object()
+        if self.request.user == product.author:
+            return True
+        return False
 
 def about(request):
     return render(request, 'ms18/about.html', {'title': 'About'})
