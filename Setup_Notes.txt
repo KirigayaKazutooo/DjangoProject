@@ -15,7 +15,8 @@ git pull https://github.com/manuelamanetjr/django_project.git
 pip list
 
 (env error Powershell)
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+
 
 django-admin startproject django_project
 

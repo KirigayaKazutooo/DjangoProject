@@ -3,7 +3,7 @@ body {
   color: #333333;
   margin-top: 5rem;
 }
-  
+
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
@@ -29,7 +29,6 @@ ul {
 }
 
 .content-section {
-  background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -45,9 +44,16 @@ a.article-title:hover {
   text-decoration: none;
 }
 
-.article-content {
-  white-space: pre-line;
+.content-section {
+  max-width: 800px; /* Set your desired maximum width */
+  width: 100%;
+  margin: 0 auto; /* Center the content section */
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
 }
+
 
 .article-img {
   height: 65px;
@@ -83,19 +89,8 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
-img.logo-img {
+img.logo-img {  
   max-width: 40px; 
   border-radius: 50%; 
   margin-right: 10px; 
-}
-
-#logout-form {
-  display: inline;
-}
-#logout-form button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: none;
 }
